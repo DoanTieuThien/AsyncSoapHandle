@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:itsdef="http://ws.webservice.its.com/itsDataTypes"
+	targetNamespace="http://ws.webservice.its.com/itsDataTypes"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xsd:complexType name="HeaderType">
+		<xsd:sequence>
+			<xsd:element name="AuthDetailsType"
+				type="itsdef:AuthDetailsType" />
+			<xsd:element name="MessageName" type="xsd:string"
+				minOccurs="0" />
+			<xsd:element name="EventDateTime" type="xsd:string"
+				minOccurs="0" />
+			<xsd:element name="TansactionId" type="xsd:string"
+				minOccurs="0" />
+			<xsd:element name="AppName" type="xsd:string"
+				minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="AuthDetailsType">
+		<xsd:sequence>
+			<xsd:element name="UserName" type="xsd:string"
+				minOccurs="0" />
+			<xsd:element name="Password" type="xsd:string"
+				minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="RetResultType">
+		<xsd:sequence>
+			<xsd:element name="status" type="xsd:string" />
+			<xsd:element name="message" type="xsd:string" />
+			<xsd:element name="transactionId" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ProcessMessageType">
+		<xsd:sequence>
+			<xsd:element name="queryStudentInfoMessage"
+				type="itsdef:QueryStudentInfoRequestType" />
+			<xsd:element name="queryCourseInfoMessage"
+				type="itsdef:QueryCourseInfoRequestType" />
+
+			<xsd:element name="dataStudentInfoMessage"
+				type="itsdef:QueryStudentInfoResponseType" />
+			<xsd:element name="dataCourseInfoMessage"
+				type="itsdef:QueryCourseInfoResponseType" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="QueryStudentInfoRequestType">
+		<xsd:sequence>
+			<xsd:element name="code" type="xsd:string" />
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="identityNumber" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="QueryStudentInfoResponseType" >
+		<xsd:sequence>
+			<xsd:element name="studentCode" type="xsd:string" />
+			<xsd:element name="fullName" type="xsd:string" />
+			<xsd:element name="identityNumber" type="xsd:string" />
+			<xsd:element name="className" type="xsd:string" />
+			<xsd:element name="documentNumber" type="xsd:string" />
+			<xsd:element name="teacher" type="xsd:string" />
+			<xsd:element name="course" type="xsd:string" />
+			<xsd:element name="age" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="QueryCourseInfoRequestType">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="specialized" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="QueryCourseInfoResponseType">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="specialized" type="xsd:string" />
+			<xsd:element name="startDateTime" type="xsd:string" />
+			<xsd:element name="courseTime" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
